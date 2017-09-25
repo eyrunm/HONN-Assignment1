@@ -1,4 +1,9 @@
-package JohannasLibrary.Main.Java.is.ru.honn;
+package Java.is.ru.honn;
+
+import org.json.simple.JsonArray;
+import org.json.simple.JsonObject;
+
+import java.lang.reflect.Array;
 
 /**
  * Created by Eyrún Magnúsdóttir on 19.9.2017.
@@ -8,30 +13,41 @@ package JohannasLibrary.Main.Java.is.ru.honn;
  */
 public class FriendsAndFamily {
 
-    private String nafn;
+    private String fornafn;
+    private int id;
+    private String eftirnafn;
     private String netfang;
     private String heimilisfang;
-    private String numer;
+    private String nafn;
 
-    public FriendsAndFamily (String fornafn, String eftirnafn, String netfang, String heimilisfang, String numer) {
-        this.nafn = fornafn + " " + eftirnafn;
+    private JsonArray lanasafn;
+
+    public FriendsAndFamily (String fornafn, String eftirnafn, int id, String netfang, String heimilisfang, JsonArray lanasafn) {
+        this.fornafn = fornafn;
+        this.eftirnafn = eftirnafn;
+        this.id = id;
         this.netfang = netfang;
         this.heimilisfang = heimilisfang;
-        this.numer = numer;
+        this.lanasafn = lanasafn;
     }
 
-    void setNafn(String fornafn, String eftirnafn){
+    public void setNafn(String fornafn, String eftirnafn){
         this.nafn = fornafn + " " + eftirnafn;
     }
-    String getNafn (){
-        return this.nafn;
+
+    public String getNafn (){
+        return this.fornafn + " " + this.eftirnafn;
     }
 
-    void setNetfang(String netfang) {
+    public void setID(int id){ this.id = id; }
+
+    public int getId (){ return this.id;  }
+
+    public void setNetfang(String netfang) {
         this.netfang = netfang;
     }
 
-    String getNetfang() {
+    public String getNetfang() {
         return this.netfang;
     }
 
@@ -39,15 +55,19 @@ public class FriendsAndFamily {
         this.heimilisfang = heimilisfang;
     }
 
-    String getHeimilisfang(){
+    public String getHeimilisfang(){
         return this.heimilisfang;
     }
 
-    void setNumer(String numer){
-        this.numer = numer;
+    public void setLanasafn(JsonArray lanasafn){
+        this.lanasafn = lanasafn;
     }
 
-    String getNumer(){
-        return this.numer;
+    public JsonArray getLanasafn(){
+        return this.lanasafn;
+    }
+
+    public String toString() {
+        return "Nafn: " + this.fornafn + " " + this.eftirnafn + " , Heimilisfang: " + this.getHeimilisfang()+ "\n";
     }
 }

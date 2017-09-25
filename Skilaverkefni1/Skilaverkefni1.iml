@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/JohannasLibrary/Test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/src/JohannasLibrary" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/src/JohannasLibrary/Main" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/lib" type="java-resource" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="jdk1.8" level="project" />
+    <orderEntry type="library" name="json-simple-2.1.2" level="project" />
+    <orderEntry type="library" name="jackson-core-2.2.2" level="project" />
+    <orderEntry type="library" name="jackson-databind-2.9.1" level="project" />
+  </component>
+</module>
