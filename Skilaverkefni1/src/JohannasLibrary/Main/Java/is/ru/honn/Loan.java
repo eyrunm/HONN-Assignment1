@@ -27,7 +27,7 @@ public class Loan {
     }
 
     public int getBookID(){
-        return this.friendID;
+        return this.bookID;
     }
     public void setBookID(int bookID){
         this.bookID = bookID;

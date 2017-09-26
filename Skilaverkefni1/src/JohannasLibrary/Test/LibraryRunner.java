@@ -1,13 +1,7 @@
-import Java.is.ru.honn.BookLoanObject;
-import Java.is.ru.honn.Loan;
-import Java.is.ru.honn.Parse.ParseJson.BookParser;
-import Java.is.ru.honn.Parse.ParseJson.FriendParser;
-import Java.is.ru.honn.Parse.ParseProcess;
-import Java.is.ru.honn.Report.getReportByUser;
+import Java.is.ru.honn.Report.getReport;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Scanner;
 
@@ -18,33 +12,33 @@ public class LibraryRunner {
     public static void main (String[] args) throws ParseException {
 
         Scanner scan = new Scanner(System.in);
-        getReportByUser rep;
-        ArrayList<BookLoanObject> loans;
-
-        /*Hægt að taka út skýrslu sem sýnir hverjir eru með hvaða bækur á hvaða tíma
-            Fyrir gefna dagsetningu, sjá lista yfir bækur sem eru í láni og hverjir eru með þær í láni
-            Fyrir gefna dagsetningu, sjá lista yfir einstaklinga sem eru með bækur í láni, og hvaða bækur það eru
-            Fyrir gefna dagsetningu sjá lista yfir einstaklinga sem eru búnir að vera með eina (eða fleiri) bækur í láni í meira en mánuð
-        */
+        getReport report;
 
         System.out.println("Velkomin í Bókasafn Jóhönnu  \n\n");
+        System.out.println("Veldu 1 til þess að sjá lista yfir bækur sem eru í láni og hverjir eru með þær í láni\n");
+        System.out.println("Veldu 2 til þess að sjá lista yfir einstaklinga sem eru með bækur í láni, og hvaða bækur það eru\n");
+        System.out.println("Veldu 3 til þess að sjá lista yfir einstaklinga sem eru búnir að vera með eina (eða fleiri) bækur í láni í meira en mánuð\n");
+
+        String choice = scan.nextLine();
         System.out.println("Vinsamlegast sláðu in dagsetningu á forminu YYYY-MM-dd \n");
         String date = scan.nextLine();
-        rep = new getReportByUser();
-        try {
-            loans = rep.getLoansByUserID(date);
-            if(loans.isEmpty()){
-                System.out.println("Það eru engar bækur í leigu á þessum degi");
-            }
-            else{
-                for(BookLoanObject l : loans){
-                    System.out.println(l);
+            report = new getReport(date);
+            if (choice.equals("1")) {
+                if (!report.getLoansByUser()) {
+                    System.out.println("Það eru engar bækur í leigu á þessum degi");
                 }
+            } else if (choice.equals("2")) {
+                if (!report.getLoansByBook()) {
+                    System.out.println("Það eru engar bækur í leigu á þessum degi");
+                }
+
+            } else if (choice.equals("3")) {
+                report.getMoreThan1MonthLoans();
+                    if (!report.getMoreThan1MonthLoans()){
+                        System.out.println("Það eru engar bækur í leigu á þessum degi");
+                    }
+
             }
-        } catch (ParseException e) {
-            e.printStackTrace();
         }
 
-
-    }
 }

@@ -7,7 +7,7 @@ import java.util.Date;
  *
  * lista yfir bækur sem eru í láni og hverjir eru með þær í láni
  */
-public class BookLoanObject {
+public class BookLoanObject implements Comparable<BookLoanObject>{
     private String bookName;
     private String friendName;
     private Date dateBorrowed;
@@ -20,7 +20,24 @@ public class BookLoanObject {
         this.dateBorrowed = dateBorrowed;
     }
 
+    public Date getDateBorrowed(){
+        return this.dateBorrowed;
+    }
+
+    public String getFriendName(){
+        return this.friendName;
+    }
+
+    public String getBookName(){
+        return this.bookName;
+    }
+
     public String toString(){
-        return "Bók: " + this.bookName + " , nafn leigjanda: " + this.friendName + " Útlánadagsetning: " + this.dateBorrowed + "\n";
+        return "Bók: " + this.bookName + " , Leigjandi: " + this.friendName + " Útlánadagsetning: " + this.dateBorrowed;
+    }
+
+    @Override
+    public int compareTo(BookLoanObject o) {
+        return getDateBorrowed().compareTo(o.getDateBorrowed());
     }
 }
