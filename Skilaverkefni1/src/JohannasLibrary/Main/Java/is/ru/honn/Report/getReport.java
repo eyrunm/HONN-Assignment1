@@ -15,9 +15,9 @@ import java.util.Date;
 /**
  * Created by Eyrún Magnúsdóttir on 26.9.2017.
  *
- * returns all submitted loans by friends from a single date until today
+ * Uses getReportService to display information about loans
  *
- * fyrir gefna dagsetningu, sjá lista yfir einstaklinga sem eru með bækur í láni, og hvaða bækur það eru
+ * @param date the date for the report
  */
 public class getReport {
 

@@ -9,6 +9,10 @@ import java.util.ArrayList;
 
 /**
  * Created by Eyrún Magnúsdóttir on 25.9.2017.
+ *
+ * handles parsing JSON files.
+ * uses FriendParser for parsing information about friends
+ * uses BookParser for parsing information about Books
  */
 public class ParseProcess {
     FriendParser friendParser;

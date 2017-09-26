@@ -16,6 +16,10 @@ import java.util.Iterator;
 
 /**
  * Created by Eyrún Magnúsdóttir on 20.9.2017.
+ *
+ * Parses Json file and stores the data about friends and family into an ArrayList of FriendsAndFamily objects
+ * Stores the information about loans in a ArrayList of Loan objects
+ *  @Params source the location of the JSON file
  */
 public class FriendParser {
 

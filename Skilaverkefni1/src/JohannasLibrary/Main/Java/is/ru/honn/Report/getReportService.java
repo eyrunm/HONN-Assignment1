@@ -10,15 +10,15 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.*;
-import java.util.concurrent.TimeUnit;
 
 import static java.lang.Math.toIntExact;
 
 /**
  * Created by Eyrún Magnúsdóttir on 25.9.2017.
  *
+ *Service class for loans
  *
- *
+ * @param date the date for the report
  */
 public class getReportService {
     /*Hægt að taka út skýrslu sem sýnir hverjir eru með hvaða bækur á hvaða tíma
@@ -69,7 +69,7 @@ public class getReportService {
         for(Loan l: loan){
             Iterator<FriendsAndFamily> friendIT = allFriends.iterator();
             Iterator<Book> bookIT = allBooks.iterator();
-            //finna nafn á frien
+            //find the name of the friend
             while(friendIT.hasNext()) {
                 FriendsAndFamily f = friendIT.next();
                 if (f.getId() == l.getFriendID()) {
@@ -77,12 +77,13 @@ public class getReportService {
                 }
             }
             while(bookIT.hasNext()) {
-                //finna nafn á friend
+                //find the name of the book
                 Book b = (Book) bookIT.next();
                 if (b.getID() == l.getBookID()) {
                     bookName = b.getTitle();
                 }
             }
+            //add to list
             this.currentLoans.add(new BookLoanObject(bookName, friendName, l.getDateBorrowed()));
             }
 
@@ -106,9 +107,6 @@ public class getReportService {
                 Date date1 = sdf.parse(this.date);
                 for(BookLoanObject l : this.currentLoans) {
                     Date date2 = l.getDateBorrowed();
-                    //System.out.println("dateBorrowed" + l.getDateBorrowed());
-                    //System.out.println("Date 1: " + date1);
-                    //System.out.println("Date 2: " + date2);
                     diff = date2.getTime() - date1.getTime();
                     days = (toIntExact(diff / 86400000));
                     if( days > 30) {

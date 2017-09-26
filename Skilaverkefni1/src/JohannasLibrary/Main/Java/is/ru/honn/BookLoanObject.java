@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  *Created by Eyrún Magnúsdóttir on 25.9.2017.
  *
- * lista yfir bækur sem eru í láni og hverjir eru með þær í láni
+ * Class for displaying information about a loan
  */
 public class BookLoanObject implements Comparable<BookLoanObject>{
     private String bookName;

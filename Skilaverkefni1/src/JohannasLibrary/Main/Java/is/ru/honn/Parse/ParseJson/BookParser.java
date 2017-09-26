@@ -15,6 +15,10 @@ import java.util.ArrayList;
 
 /**
  * Created by Eyrún Magnúsdóttir on 20.9.2017.
+ *
+ * Parses Json file and stores the data into an ArrayList of Book objects
+ *
+ @Params source the location of the JSON file
  */
 public class BookParser {
 

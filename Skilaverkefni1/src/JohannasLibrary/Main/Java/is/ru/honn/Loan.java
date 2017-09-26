@@ -7,7 +7,7 @@ import java.util.Date;
 /**
  * Created by Eyrún Magnúsdóttir on 19.9.2017.
  *
- * Stores
+ * Stores the information about a loan instance
  */
 public class Loan {
     private int friendID;
