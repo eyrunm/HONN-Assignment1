@@ -12,6 +12,8 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
+import static java.lang.Math.toIntExact;
+
 /**
  * Created by Eyrún Magnúsdóttir on 25.9.2017.
  *
@@ -99,14 +101,17 @@ public class getReportService {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         int days = 0;
-
+        long diff = 0;
             try {
                 Date date1 = sdf.parse(this.date);
                 for(BookLoanObject l : this.currentLoans) {
                     Date date2 = l.getDateBorrowed();
-                    days = (int) (( date1.getTime() - date2.getTime() ) / 8640000);
-                    System.out.println(days);
-                    if( Math.abs(days) > 30) {
+                    //System.out.println("dateBorrowed" + l.getDateBorrowed());
+                    //System.out.println("Date 1: " + date1);
+                    //System.out.println("Date 2: " + date2);
+                    diff = date2.getTime() - date1.getTime();
+                    days = (toIntExact(diff / 86400000));
+                    if( days > 30) {
                         this.oneMonthLoans.add(l);
                     }
                 }
@@ -114,6 +119,19 @@ public class getReportService {
                 e.printStackTrace();
             }
             Collections.sort(this.oneMonthLoans);
+        Date date1 = null;
+        try {
+            date1 = sdf.parse(this.date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        for(BookLoanObject l : this.oneMonthLoans){
+
+                Date date2 = l.getDateBorrowed();
+                diff = date2.getTime() - date1.getTime();
+                days = (toIntExact(diff / 86400000));
+                System.out.println(l + " Dagar í útláni: " + days);
+            }
         return this.oneMonthLoans;
     }
 

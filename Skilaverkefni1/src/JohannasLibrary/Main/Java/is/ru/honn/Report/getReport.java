@@ -36,8 +36,11 @@ public class getReport {
     }
 
     public boolean getLoansByUser(){
+        int count = 1;
         for(BookLoanObject l : loans){
             System.out.println(l);
+            System.out.println(count);
+            count++;
         }
         if(!loans.isEmpty()){
             return true;
@@ -67,9 +70,6 @@ public class getReport {
          */
 
         if(!loansMoreThan1Month.isEmpty()) {
-            for (BookLoanObject l : loansMoreThan1Month) {
-                System.out.println(l);
-            }
             return true;
         }
         else {
